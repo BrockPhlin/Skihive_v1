@@ -8,14 +8,18 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    // 检查登录状态
+    this.checkLoginStatus()
+    
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log('登录成功:', res.code)
+        console.log('获取登录凭证成功:', res.code)
+        this.globalData.loginCode = res.code
       },
       fail: err => {
-        console.error('登录失败:', err)
+        console.error('获取登录凭证失败:', err)
       }
     })
 
@@ -38,6 +42,8 @@ App({
   
   globalData: {
     userInfo: null,
+    loginCode: '',
+    isLoggedIn: false,
     /** 装配页传给飞行页的已选组件 id 列表，如 ['frame','propeller'] */
     assemblySelection: null,
     /** 飞行数据 */
@@ -57,6 +63,24 @@ App({
       apiBaseUrl: 'https://api.skivhive.com',
       aiApiKey: 'sk-3d03545b1a764a118710e17afede70f5',
       aiApiUrl: 'https://api.deepseek.com/v1/chat/completions'
+    }
+  },
+
+  /**
+   * 检查登录状态
+   */
+  checkLoginStatus() {
+    const isLoggedIn = wx.getStorageSync('isLoggedIn')
+    const userInfo = wx.getStorageSync('userInfo')
+    
+    if (isLoggedIn && userInfo) {
+      this.globalData.isLoggedIn = true
+      this.globalData.userInfo = userInfo
+      console.log('用户已登录:', userInfo.nickName)
+    } else {
+      this.globalData.isLoggedIn = false
+      this.globalData.userInfo = null
+      console.log('用户未登录')
     }
   },
 
@@ -100,6 +124,36 @@ App({
   updateEnvironment(environment) {
     this.globalData.environment = { ...this.globalData.environment, ...environment }
     this.saveGlobalData()
+  },
+
+  /**
+   * 用户登录
+   */
+  login(userInfo) {
+    this.globalData.userInfo = userInfo
+    this.globalData.isLoggedIn = true
+    
+    // 保存到本地存储
+    wx.setStorageSync('isLoggedIn', true)
+    wx.setStorageSync('userInfo', userInfo)
+    
+    this.saveGlobalData()
+    console.log('用户登录成功:', userInfo.nickName)
+  },
+
+  /**
+   * 用户登出
+   */
+  logout() {
+    this.globalData.userInfo = null
+    this.globalData.isLoggedIn = false
+    
+    // 清除本地存储
+    wx.removeStorageSync('isLoggedIn')
+    wx.removeStorageSync('userInfo')
+    
+    this.saveGlobalData()
+    console.log('用户已登出')
   },
 
   /**

@@ -1,0 +1,11 @@
+{
+	"ios": {
+		"name": "Skihive test"
+	},
+	"android": {
+		"name": "Skihive test"
+	},
+	"common": {
+		"name": "Skihive test"
+	}
+}

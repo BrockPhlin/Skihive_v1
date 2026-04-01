@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="index-page">
   <view class="content">
-    <image src="/login/assets/materials/logo.svg" mode="aspectFit" class="logo-image"></image>
+    <image src="/assets/svg/logo.svg" mode="aspectFit" class="logo-image"></image>
     <text class="subtitle">欢迎来到低空装配与仿真平台</text>
 
     <view style="height: 60px;"></view>

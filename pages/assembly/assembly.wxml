@@ -12,7 +12,7 @@
 
   <view class="preview-area">
     <view class="preview-background">
-      <image src="/assembly/assets/materials/assembly/Group 20.svg" mode="aspectFit"></image>
+      <image src="/assets/svg/Group 20.svg" mode="aspectFit"></image>
     </view>
     <view class="preview-content">
       <block wx:if="{{completedCount == 6}}">
@@ -32,7 +32,7 @@
     bindtap="handleComponentClick"
     data-id="propeller"
   >
-    <image src="/assembly/assets/materials/assembly/Group 66.svg" mode="aspectFit"></image>
+    <image src="/assets/svg/Group 66.svg" mode="aspectFit"></image>
     <view class="done-badge" wx:if="{{slotDoneFlags.propeller}}">✓</view>
   </view>
 
@@ -41,7 +41,7 @@
     bindtap="handleComponentClick"
     data-id="motor"
   >
-    <image src="/assembly/assets/materials/assembly/Group 40.svg" mode="aspectFit"></image>
+    <image src="/assets/svg/Group 40.svg" mode="aspectFit"></image>
     <view class="done-badge" wx:if="{{slotDoneFlags.motor}}">✓</view>
   </view>
 
@@ -50,7 +50,7 @@
     bindtap="handleComponentClick"
     data-id="battery"
   >
-    <image src="/assembly/assets/materials/assembly/Group 45.svg" mode="aspectFit"></image>
+    <image src="/assets/svg/Group 45.svg" mode="aspectFit"></image>
     <view class="done-badge" wx:if="{{slotDoneFlags.battery}}">✓</view>
   </view>
 
@@ -59,7 +59,7 @@
     bindtap="handleComponentClick"
     data-id="sensor"
   >
-    <image src="/assembly/assets/materials/assembly/Group 67.svg" mode="aspectFit"></image>
+    <image src="/assets/svg/Group 67.svg" mode="aspectFit"></image>
     <view class="done-badge" wx:if="{{slotDoneFlags.sensor}}">✓</view>
   </view>
 
@@ -68,7 +68,7 @@
     bindtap="handleComponentClick"
     data-id="frame"
   >
-    <image src="/assembly/assets/materials/assembly/Group 36.svg" mode="aspectFit"></image>
+    <image src="/assets/svg/Group 36.svg" mode="aspectFit"></image>
     <view class="done-badge" wx:if="{{slotDoneFlags.frame}}">✓</view>
   </view>
 
@@ -77,12 +77,12 @@
     bindtap="handleComponentClick"
     data-id="camera"
   >
-    <image src="/assembly/assets/materials/assembly/Group 37.svg" mode="aspectFit"></image>
+    <image src="/assets/svg/Group 37.svg" mode="aspectFit"></image>
     <view class="done-badge" wx:if="{{slotDoneFlags.camera}}">✓</view>
   </view>
 
   <view class="ai-analysis-area">
-    <image src="/assembly/assets/materials/assembly/Group 68.svg" mode="aspectFit"></image>
+    <image src="/assets/svg/Group 68.svg" mode="aspectFit"></image>
   </view>
 
   <view class="bottom-buttons">

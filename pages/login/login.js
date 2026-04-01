@@ -63,54 +63,84 @@ Page({
       return
     }
     
-    this.setData({ isLoading: true })
-    
-    // 调用微信登录API
-    wx.login({
-      success: (res) => {
-        if (res.code) {
-          // 获取用户信息
-          wx.getUserProfile({
-            desc: '用于完善用户资料',
-            success: (userInfoRes) => {
-              console.log('微信登录成功:', userInfoRes.userInfo)
+    // 必须先获取用户信息，这是点击事件的第一行代码
+    wx.getUserProfile({
+      desc: '用于完善用户资料',
+      success: (userInfoRes) => {
+        console.log('获取用户信息成功:', userInfoRes.userInfo)
+        
+        this.setData({ isLoading: true })
+        
+        // 再调用wx.login获取code
+        wx.login({
+          success: (res) => {
+            if (res.code) {
+              console.log('获取登录凭证code:', res.code)
               
-              // 这里可以将code和用户信息发送到后端进行登录验证
-              // 模拟登录成功
+              // 将code和用户信息保存到全局数据
+              const app = getApp()
+              app.globalData.userInfo = userInfoRes.userInfo
+              
+              // 这里应该调用后端API进行登录验证
+              // wx.request({
+              //   url: app.globalData.config.apiBaseUrl + '/login',
+              //   method: 'POST',
+              //   data: {
+              //     code: res.code,
+              //     userInfo: userInfoRes.userInfo
+              //   },
+              //   success: (apiRes) => {
+              //     if (apiRes.data.success) {
+              //       // 登录成功，保存token等信息
+              //       wx.setStorageSync('token', apiRes.data.token)
+              //     }
+              //   }
+              // })
+              
+              // 模拟登录成功流程
               setTimeout(() => {
                 this.setData({ isLoading: false })
+                
+                // 保存登录状态
+                wx.setStorageSync('isLoggedIn', true)
+                wx.setStorageSync('userInfo', userInfoRes.userInfo)
+                
                 wx.showToast({
                   title: '微信登录成功',
-                  icon: 'success'
+                  icon: 'success',
+                  duration: 1500
                 })
-                wx.navigateTo({
-                  url: '/pages/environment/environment'
-                })
+                
+                // 延迟跳转，让用户看到成功提示
+                setTimeout(() => {
+                  wx.navigateTo({
+                    url: '/pages/environment/environment'
+                  })
+                }, 1500)
               }, 1000)
-            },
-            fail: (err) => {
-              console.error('获取用户信息失败:', err)
+            } else {
+              console.error('微信登录失败，无法获取code:', res.errMsg)
               this.setData({ isLoading: false })
               wx.showToast({
-                title: '获取用户信息失败',
+                title: '微信登录失败，请检查网络',
                 icon: 'none'
               })
             }
-          })
-        } else {
-          console.error('微信登录失败:', res.errMsg)
-          this.setData({ isLoading: false })
-          wx.showToast({
-            title: '微信登录失败',
-            icon: 'none'
-          })
-        }
+          },
+          fail: (err) => {
+            console.error('微信登录API调用失败:', err)
+            this.setData({ isLoading: false })
+            wx.showToast({
+              title: '登录失败，请稍后重试',
+              icon: 'none'
+            })
+          }
+        })
       },
       fail: (err) => {
-        console.error('微信登录失败:', err)
-        this.setData({ isLoading: false })
+        console.error('获取用户信息失败:', err)
         wx.showToast({
-          title: '微信登录失败',
+          title: '获取用户信息失败，请重试',
           icon: 'none'
         })
       }

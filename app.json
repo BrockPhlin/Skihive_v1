@@ -27,5 +27,6 @@
   },
   "style": "v2",
   "renderer": "webview",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useAuthorizePage": true
 }

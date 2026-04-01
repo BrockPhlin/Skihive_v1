@@ -1,7 +1,7 @@
 <view class="login-page">
   <!-- 状态栏 -->
   <view class="status-bar">
-    <image src="/login/assets/materials/1.iOS/1.Bars/1.Status Bar/X - Light Status Bar.svg" mode="widthFix"></image>
+    <image src="/assets/svg/X - Light Status Bar.svg" mode="widthFix"></image>
   </view>
 
   <!-- 背景渐变 -->
@@ -12,7 +12,7 @@
 
   <!-- Logo区域 -->
   <view class="logo-area">
-    <image src="/login/assets/materials/logo.svg" mode="aspectFit" class="logo-image"></image>
+    <image src="/assets/svg/logo.svg" mode="aspectFit" class="logo-image"></image>
 
     <view style="height: 30px;"></view>
 
@@ -21,7 +21,7 @@
 
   <!-- 用户头像区域 -->
   <view class="avatar-area">
-    <image src="/login/assets/materials/Group 63.svg" mode="aspectFit"></image>
+    <image src="/assets/svg/Group 63.svg" mode="aspectFit"></image>
   </view>
 
   <!-- 表单区域 -->
@@ -68,8 +68,7 @@
     
     <!-- 微信登录按钮 -->
     <button 
-      open-type="getUserInfo"
-      bindgetuserinfo="handleWechatLogin"
+      bindtap="handleWechatLogin"
       class="btn btn-wechat"
       disabled="{{isLoading}}"
     >

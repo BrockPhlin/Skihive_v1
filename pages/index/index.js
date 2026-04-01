@@ -5,7 +5,22 @@ Page({
   },
 
   onLoad() {
-    // 页面加载时的逻辑
+    // 检查登录状态
+    this.checkLoginStatus()
+  },
+
+  /**
+   * 检查登录状态
+   */
+  checkLoginStatus() {
+    const app = getApp()
+    
+    if (app.globalData.isLoggedIn) {
+      console.log('用户已登录，直接进入环境选择页面')
+      wx.switchTab({
+        url: '/pages/environment/environment'
+      })
+    }
   },
 
   handleLogin() {
