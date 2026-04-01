@@ -1,0 +1,25 @@
+<view class="environment-page">
+  <view class="content">
+    <text class="title">选择场景</text>
+    <view style="height: 40px;"></view>
+    <view class="environment-list">
+      <view 
+        wx:for="{{environments}}" 
+        wx:key="id"
+        class="environment-item {{selectedEnvironment == item.id ? 'selected' : ''}}"
+        bindtap="handleEnvironmentSelect"
+        data-id="{{item.id}}"
+      >
+        <view class="environment-icon">{{item.icon}}</view>
+        <view class="environment-content">
+          <text class="environment-name">{{item.name}}</text>
+          <text class="environment-description">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+
+    <button bindtap="handleNavigateToAssembly" class="nav-button">
+      开始装配
+    </button>
+  </view>
+</view>

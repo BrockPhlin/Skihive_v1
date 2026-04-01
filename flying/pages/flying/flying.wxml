@@ -1,0 +1,46 @@
+<view class="flying-page">
+  <view class="content">
+    <text class="title">飞行页面</text>
+    
+    <view class="score-card" wx:if="{{evaluationScore != null}}">
+      <text class="score-label">综合性能得分</text>
+      <text class="score-value">{{evaluationScore}}</text>
+      <text class="score-hint">演示加权模型；动力系统与重量/成本权衡可参考 flyeval.com/paper 多旋翼性能评估思路</text>
+    </view>
+
+    <view class="assembly-info" wx:if="{{assemblyIds.length}}">
+      <text class="assembly-label">当前装配</text>
+      <text class="assembly-text">{{assemblySummary}}</text>
+    </view>
+
+    <view class="flight-status">
+      <text class="status-text">
+        {{isFlying ? '飞行中' : '未飞行'}}
+      </text>
+      <text class="time-text">
+        飞行时间: {{flightTime}}s
+      </text>
+    </view>
+
+    <view class="controls">
+      <button 
+        bindtap="handleStartFlying"
+        disabled="{{isFlying}}"
+        class="control-button start"
+      >
+        开始飞行
+      </button>
+      <button 
+        bindtap="handleStopFlying"
+        disabled="{{!isFlying}}"
+        class="control-button stop"
+      >
+        停止飞行
+      </button>
+    </view>
+
+    <button bindtap="handleNavigateToAssembly" class="nav-button">
+      查看性能评估
+    </button>
+  </view>
+</view>

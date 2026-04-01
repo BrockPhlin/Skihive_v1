@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="index-page">
+  <view class="content">
+    <image src="/login/assets/materials/logo.svg" mode="aspectFit" class="logo-image"></image>
+    <text class="subtitle">欢迎来到低空装配与仿真平台</text>
+
+    <view style="height: 60px;"></view>
+    
+    <view class="buttons">
+      <button class="btn btn-primary" bindtap="handleLogin">
+        登录
+      </button>
+      <button class="btn btn-secondary" bindtap="handleRegister">
+        注册
+      </button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,100 @@
+<view class="assembly-page">
+  <view class="status-bar"></view>
+
+  <view class="title-area">
+    <view class="main-title">组件装配</view>
+    <view class="subtitle">点击图标进入选型，六项全部确认后可开始飞行</view>
+  </view>
+
+  <view class="progress-area">
+    <view class="progress-text">{{completedCount}}/6</view>
+  </view>
+
+  <view class="preview-area">
+    <view class="preview-background">
+      <image src="/assembly/assets/materials/assembly/Group 20.svg" mode="aspectFit"></image>
+    </view>
+    <view class="preview-content">
+      <block wx:if="{{completedCount == 6}}">
+        <view class="complete-content">
+          <view class="checkmark">✓</view>
+          <view class="complete-text">装配完成！</view>
+        </view>
+      </block>
+      <block wx:else>
+        <text class="preview-hint">点击周围图标逐项选型</text>
+      </block>
+    </view>
+  </view>
+
+  <view
+    class="component-button component-button--propeller {{slotDoneFlags.propeller ? 'is-done' : ''}}"
+    bindtap="handleComponentClick"
+    data-id="propeller"
+  >
+    <image src="/assembly/assets/materials/assembly/Group 66.svg" mode="aspectFit"></image>
+    <view class="done-badge" wx:if="{{slotDoneFlags.propeller}}">✓</view>
+  </view>
+
+  <view
+    class="component-button component-button--motor {{slotDoneFlags.motor ? 'is-done' : ''}}"
+    bindtap="handleComponentClick"
+    data-id="motor"
+  >
+    <image src="/assembly/assets/materials/assembly/Group 40.svg" mode="aspectFit"></image>
+    <view class="done-badge" wx:if="{{slotDoneFlags.motor}}">✓</view>
+  </view>
+
+  <view
+    class="component-button component-button--battery {{slotDoneFlags.battery ? 'is-done' : ''}}"
+    bindtap="handleComponentClick"
+    data-id="battery"
+  >
+    <image src="/assembly/assets/materials/assembly/Group 45.svg" mode="aspectFit"></image>
+    <view class="done-badge" wx:if="{{slotDoneFlags.battery}}">✓</view>
+  </view>
+
+  <view
+    class="component-button component-button--sensor {{slotDoneFlags.sensor ? 'is-done' : ''}}"
+    bindtap="handleComponentClick"
+    data-id="sensor"
+  >
+    <image src="/assembly/assets/materials/assembly/Group 67.svg" mode="aspectFit"></image>
+    <view class="done-badge" wx:if="{{slotDoneFlags.sensor}}">✓</view>
+  </view>
+
+  <view
+    class="component-button component-button--frame {{slotDoneFlags.frame ? 'is-done' : ''}}"
+    bindtap="handleComponentClick"
+    data-id="frame"
+  >
+    <image src="/assembly/assets/materials/assembly/Group 36.svg" mode="aspectFit"></image>
+    <view class="done-badge" wx:if="{{slotDoneFlags.frame}}">✓</view>
+  </view>
+
+  <view
+    class="component-button component-button--camera {{slotDoneFlags.camera ? 'is-done' : ''}}"
+    bindtap="handleComponentClick"
+    data-id="camera"
+  >
+    <image src="/assembly/assets/materials/assembly/Group 37.svg" mode="aspectFit"></image>
+    <view class="done-badge" wx:if="{{slotDoneFlags.camera}}">✓</view>
+  </view>
+
+  <view class="ai-analysis-area">
+    <image src="/assembly/assets/materials/assembly/Group 68.svg" mode="aspectFit"></image>
+  </view>
+
+  <view class="bottom-buttons">
+    <button bindtap="handleReset" class="reset-button">
+      <text class="reset-icon">↺</text>
+    </button>
+    <button
+      bindtap="handleBottomButton"
+      disabled="{{completedCount < 6}}"
+      class="next-button {{completedCount >= 6 ? 'next-button--ready' : ''}}"
+    >
+      <text class="next-text">开始飞行</text>
+    </button>
+  </view>
+</view>

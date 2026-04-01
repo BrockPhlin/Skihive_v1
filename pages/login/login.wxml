@@ -1,0 +1,90 @@
+<view class="login-page">
+  <!-- 状态栏 -->
+  <view class="status-bar">
+    <image src="/login/assets/materials/1.iOS/1.Bars/1.Status Bar/X - Light Status Bar.svg" mode="widthFix"></image>
+  </view>
+
+  <!-- 背景渐变 -->
+  <view class="background-gradient">
+    <view class="gradient-circle"></view>
+    <view class="gradient-circle secondary"></view>
+  </view>
+
+  <!-- Logo区域 -->
+  <view class="logo-area">
+    <image src="/login/assets/materials/logo.svg" mode="aspectFit" class="logo-image"></image>
+
+    <view style="height: 30px;"></view>
+
+    <view class="logo-subtitle" animation="{{subtitleAnimation}}" style="transform-origin: center center;">低空装配与仿真平台</view>
+  </view>
+
+  <!-- 用户头像区域 -->
+  <view class="avatar-area">
+    <image src="/login/assets/materials/Group 63.svg" mode="aspectFit"></image>
+  </view>
+
+  <!-- 表单区域 -->
+  <view class="form-area">
+    <!-- 邮箱输入框 -->
+    <input 
+      type="email" 
+      value="{{email}}" 
+      bindinput="handleEmailInput"
+      placeholder="邮箱"
+      class="input-field"
+    />
+
+    <!-- 密码输入框 -->
+    <input 
+      type="password" 
+      value="{{password}}" 
+      bindinput="handlePasswordInput"
+      placeholder="密码"
+      class="input-field mt-4"
+    />
+
+    <!-- 登录按钮 -->
+    <button 
+      bindtap="handleSubmit"
+      disabled="{{isLoading}}"
+      class="btn btn-primary"
+    >
+      <block wx:if="{{isLoading}}">
+        <view class="loading-spinner"></view>
+      </block>
+      <block wx:else>
+        登录
+      </block>
+    </button>
+
+    <!-- 注册按钮 -->
+    <button 
+      bindtap="handleRegister"
+      class="btn btn-secondary"
+    >
+      注册
+    </button>
+    
+    <!-- 微信登录按钮 -->
+    <button 
+      open-type="getUserInfo"
+      bindgetuserinfo="handleWechatLogin"
+      class="btn btn-wechat"
+      disabled="{{isLoading}}"
+    >
+      <text class="wechat-icon">💬</text>
+      <text>微信登录</text>
+    </button>
+  </view>
+
+  <!-- 协议复选框 -->
+  <view class="agreement-area" bindtap="handleAgreeChange">
+    <view class="checkbox" style="{{agreed ? 'background-color: rgb(133, 94, 238); border-color: rgb(133, 94, 238);' : ''}}">
+      <view class="checkbox-inner" style="{{agreed ? 'opacity: 1;' : 'opacity: 0;'}}"></view>
+    </view>
+    <text class="agreement-text">
+      阅读并同意《业务开展协议》和《隐私协议》
+    </text>
+  </view>
+</view>

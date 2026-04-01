@@ -1,0 +1,73 @@
+<view class="register-page">
+  <!-- 状态栏 -->
+  <view class="status-bar">
+    <image src="/login/assets/materials/1.iOS/1.Bars/1.Status Bar/X - Light Status Bar.svg" mode="widthFix"></image>
+  </view>
+
+  <!-- 背景渐变 -->
+  <view class="background-gradient">
+    <view class="gradient-circle"></view>
+    <view class="gradient-circle secondary"></view>
+  </view>
+
+  <!-- Logo区域 -->
+  <view class="logo-area">
+    <image src="/login/assets/materials/logo.svg" mode="aspectFit" class="logo-image"></image>
+
+    <view style="height: 30px;"></view>
+
+    <view class="logo-subtitle">低空装配与仿真平台</view>
+  </view>
+
+  <!-- 表单区域 -->
+  <view class="form-area">
+    <!-- 邮箱输入框 -->
+    <input 
+      type="email" 
+      value="{{email}}" 
+      bindinput="handleEmailInput"
+      placeholder="邮箱"
+      class="input-field"
+    />
+
+    <!-- 密码输入框 -->
+    <input 
+      type="password" 
+      value="{{password}}" 
+      bindinput="handlePasswordInput"
+      placeholder="密码"
+      class="input-field mt-4"
+    />
+
+    <!-- 确认密码输入框 -->
+    <input 
+      type="password" 
+      value="{{confirmPassword}}" 
+      bindinput="handleConfirmPasswordInput"
+      placeholder="确认密码"
+      class="input-field mt-4"
+    />
+
+    <!-- 注册按钮 -->
+    <button 
+      bindtap="handleSubmit"
+      disabled="{{isLoading}}"
+      class="btn btn-primary"
+    >
+      <block wx:if="{{isLoading}}">
+        <view class="loading-spinner"></view>
+      </block>
+      <block wx:else>
+        注册
+      </block>
+    </button>
+
+    <!-- 登录按钮 -->
+    <button 
+      bindtap="handleLogin"
+      class="btn btn-secondary"
+    >
+      已有账户？去登录
+    </button>
+  </view>
+</view>
