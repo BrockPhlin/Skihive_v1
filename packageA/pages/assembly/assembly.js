@@ -1,5 +1,5 @@
 // assembly.js — 六项需分别进入选型页确认后才计为完成
-const { computeAssemblyScore } = require('../../utils/assemblyScore.js')
+const { computeAssemblyScore } = require('../../../utils/assemblyScore.js')
 
 const COMPONENT_IDS = ['propeller', 'motor', 'battery', 'sensor', 'frame', 'camera']
 
@@ -47,7 +47,7 @@ Page({
     if (!slot) return
 
     wx.navigateTo({
-      url: '/pages/component-pick/component-pick?slot=' + encodeURIComponent(slot),
+      url: '/packageA/pages/component-pick/component-pick?slot=' + encodeURIComponent(slot),
       events: {
         componentPicked: (payload) => {
           if (!payload || !payload.slot || !payload.option) return
@@ -95,7 +95,7 @@ Page({
       evaluationScore: score
     }
     wx.navigateTo({
-      url: '/flying/pages/flying/flying'
+      url: '/packageA/pages/flying/flying'
     })
   }
 })

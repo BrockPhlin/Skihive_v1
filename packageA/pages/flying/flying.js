@@ -106,7 +106,7 @@ Page({
 
   handleNavigateToAssembly() {
     wx.navigateTo({
-      url: '/evaluation/pages/evaluation/evaluation'
+      url: '/packageA/pages/evaluation/evaluation'
     })
   }
 })

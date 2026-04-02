@@ -3,21 +3,16 @@
     "pages/index/index",
     "pages/login/login",
     "pages/register/register",
-    "pages/environment/environment",
-    "pages/assembly/assembly",
-    "pages/component-pick/component-pick"
+    "pages/environment/environment"
   ],
   "subpackages": [
     {
-      "root": "flying",
+      "root": "packageA",
       "pages": [
+        "pages/component-pick/component-pick",
+        "pages/assembly/assembly",
+        "pages/evaluation/evaluation",
         "pages/flying/flying"
-      ]
-    },
-    {
-      "root": "evaluation",
-      "pages": [
-        "pages/evaluation/evaluation"
       ]
     }
   ],

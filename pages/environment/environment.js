@@ -30,7 +30,7 @@ Page({
     }
 
     wx.navigateTo({
-      url: '/pages/assembly/assembly',
+      url: '/packageA/pages/assembly/assembly',
       fail: (err) => {
         wx.showModal({
           title: '无法打开装配页',

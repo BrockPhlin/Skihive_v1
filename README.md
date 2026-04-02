@@ -24,23 +24,20 @@
 ## 项目结构
 
 ```
-├── assets/                 # 静态资源文件
-│   └── svg/                # SVG图标资源
-├── components/             # 自定义组件
-│   └── navigation-bar/     # 导航栏组件
-├── evaluation/             # 评估模块（分包）
-│   └── pages/evaluation/   # 评估页面
-├── flying/                 # 飞行模块（分包）
-│   ├── assets/             # 飞行模块资源
-│   └── pages/flying/       # 飞行页面
-├── pages/                  # 主包页面
-│   ├── assembly/           # 装配页面
-│   ├── component-pick/     # 组件选型页面
-│   ├── environment/        # 环境选择页面
-│   ├── index/              # 首页
-│   ├── login/              # 登录页面
-│   ├── logs/               # 日志页面
-│   └── register/           # 注册页面
+├── packageA/                 # 功能模块分包
+│   └── pages/
+│       ├── assembly/         # 装配页面
+│       ├── component-pick/   # 组件选型页面
+│       ├── evaluation/       # 评估页面
+│       └── flying/           # 飞行页面
+├── components/               # 自定义组件
+│   └── navigation-bar/       # 导航栏组件
+├── pages/                    # 主包页面
+│   ├── environment/          # 环境选择页面
+│   ├── index/                # 首页
+│   ├── login/                # 登录页面
+│   ├── logs/                 # 日志页面
+│   └── register/             # 注册页面
 ├── utils/                  # 工具函数
 │   ├── assemblyScore.js    # 装配评分计算
 │   └── util.js             # 通用工具函数
